@@ -1,0 +1,59 @@
+_templates_suffix: .jinja
+_subdirectory: template
+
+project_name:
+  type: str
+  help: "Name of the project (human-readable)"
+  placeholder: "My Python Project"
+
+project_slug:
+  type: str
+  help: "Project slug (Python package name)"
+  default: "{{ project_name.lower().replace(' ', '_').replace('-', '_') | regex_replace('[^a-z0-9_]', '') }}"
+
+author_name:
+  type: str
+  help: "Author's full name"
+  placeholder: "John Doe"
+
+author_email:
+  type: str
+  help: "Author's email address"
+  placeholder: "john.doe@example.com"
+
+python_version:
+  type: str
+  help: "Python version to use"
+  default: "3.13"
+  choices:
+    - "3.12"
+    - "3.13"
+
+description:
+  type: str
+  help: "Short project description"
+  placeholder: "A Python project for data engineering and financial analysis"
+
+github_username:
+  type: str
+  help: "GitHub username (for badges and URLs)"
+  placeholder: "johndoe"
+
+use_github_actions:
+  type: bool
+  help: "Include GitHub Actions CI/CD workflow?"
+  default: true
+
+use_dependabot:
+  type: bool
+  help: "Include Dependabot configuration?"
+  default: true
+
+
+_tasks:
+  - command: "git init"
+    description: "Initialize git repository"
+  - command: "git add ."
+    description: "Stage all files"
+  - command: "git commit -m 'Initial commit from Python template'"
+    description: "Create initial commit"
