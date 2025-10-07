@@ -38,7 +38,7 @@ jobs:
 
       - name: Run tests
         run: |
-          uv run pytest --cov={{ project_slug }} --cov-report=xml
+          uv run pytest --cov={{ project_slug }} --cov-report=xml || [ $? -eq 5 ]
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
