@@ -24,10 +24,10 @@ author_email:
 python_version:
   type: str
   help: "Python version to use"
-  default: "3.13"
+  default: "3.14"
   choices:
-    - "3.12"
     - "3.13"
+    - "3.14"
 
 description:
   type: str
