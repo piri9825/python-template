@@ -18,9 +18,6 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v4
@@ -30,10 +27,10 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Set up Python {% raw %}${{ matrix.python-version }}{% endraw %}
+      - name: Set up Python {% raw %}${{ env.PYTHON_VERSION }}{% endraw %}
         uses: actions/setup-python@v4
         with:
-          python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
+          python-version: {% raw %}${{ env.PYTHON_VERSION }}{% endraw %}
 
       - name: Install dependencies
         run: |
@@ -93,9 +90,4 @@ jobs:
         run: |
           uv build
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist/
 {%- endif %}
