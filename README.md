@@ -11,7 +11,7 @@ To create a new Python project from this template:
 uv tool install copier
 
 # Generate a new project
-copier copy https://github.com/your-username/python-template my-new-project
+copier copy https://github.com/piri9825/python-template my-new-project
 
 # Or if using this template locally
 copier copy . my-new-project
