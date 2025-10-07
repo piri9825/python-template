@@ -58,7 +58,7 @@ build: ## Build package
 
 # Environment
 env-info: ## Show environment information
-	@echo "Python version: $(shell python --version)"
+	@echo "Python version: $(shell uv run python --version)"
 	@echo "UV version: $(shell uv --version)"
 	@echo "Project: {{ project_name }}"
 	@echo "Package: {{ project_slug }}"
