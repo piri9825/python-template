@@ -1,5 +1,6 @@
 _templates_suffix: .jinja
 _subdirectory: template
+_answers_file: .copier-answers.yml
 
 project_name:
   type: str
