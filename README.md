@@ -1,38 +1,46 @@
-# Python Template
+# python-template
 
-A Python project template for use with [Copier](https://copier.readthedocs.io/).
+A seed repo for new Python projects. Clone it, re-initialize git, and rename `myproject` to your package name.
 
-## Usage
-
-To create a new Python project from this template:
+## Getting Started
 
 ```bash
-# Install copier if you haven't already
-uv tool install copier
+# Clone the seed repo
+git clone https://github.com/username/python-template my-new-project
+cd my-new-project
 
-# Generate a new project
-copier copy https://github.com/piri9825/python-template my-new-project
+# Re-initialize git history
+rm -rf .git
+git init
+git add .
+git commit -m "Initial commit"
 
-# Or if using this template locally
-copier copy . my-new-project
+# Rename myproject to your package name (e.g. coolapp)
+mv src/myproject src/coolapp
+# Then update references in pyproject.toml, Makefile, and ci.yml
 ```
 
-Follow the prompts to configure your new Python project.
-
-## Updating an Existing Project
-
-To update a project that was previously generated from this template:
+## Development Setup
 
 ```bash
-# Navigate to your existing project
-cd my-existing-project
-
-# Update from the template
-copier update
+make install-dev
 ```
 
-This will apply any changes from the template while preserving your project-specific modifications. Copier will prompt you to resolve any conflicts that arise during the update process.
+## Development Commands
+
+```bash
+make test          # Run tests
+make test-cov      # Run tests with coverage
+make lint          # Run linting
+make format        # Format code
+make qa            # Run all quality checks
+```
 
 ## What's Included
 
-This template provides a basic Python project structure with common development tools and configurations.
+- **uv** for dependency management and packaging
+- **pytest** + **pytest-cov** for testing and coverage
+- **ruff** for linting and formatting
+- **pre-commit** hooks for code quality
+- **GitHub Actions** CI pipeline (test, lint, build)
+- **Dependabot** for automated dependency updates

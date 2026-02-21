@@ -156,3 +156,6 @@ outputs/
 
 # Ruff
 .ruff_cache/
+
+# Test reports
+test_reports/

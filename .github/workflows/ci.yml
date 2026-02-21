@@ -1,4 +1,3 @@
-{% if use_github_actions -%}
 name: CI
 
 on:
@@ -11,9 +10,7 @@ on:
       - hotfix/*
     tags:
       - '[0-9]+\.[0-9]+\.[0-9]+'
-
-env:
-  PYTHON_VERSION: "{{ python_version }}"
+  pull_request:
 
 jobs:
   test:
@@ -27,18 +24,13 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Set up Python {% raw %}${{ env.PYTHON_VERSION }}{% endraw %}
-        uses: actions/setup-python@v4
-        with:
-          python-version: {% raw %}${{ env.PYTHON_VERSION }}{% endraw %}
-
       - name: Install dependencies
         run: |
           uv sync --extra dev
 
       - name: Run tests
         run: |
-          uv run pytest --cov={{ project_slug }} --cov-report=xml || [ $? -eq 5 ]
+          uv run pytest --cov=myproject --cov-report=xml || [ $? -eq 5 ]
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
@@ -56,11 +48,6 @@ jobs:
         uses: astral-sh/setup-uv@v2
         with:
           enable-cache: true
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: {% raw %}${{ env.PYTHON_VERSION }}{% endraw %}
 
       - name: Install dependencies
         run: |
@@ -81,12 +68,6 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: {% raw %}${{ env.PYTHON_VERSION }}{% endraw %}
-
       - name: Build package
         run: |
           uv build
-{%- endif %}

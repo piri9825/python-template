@@ -1,4 +1,4 @@
-.PHONY: help install install-dev test test-cov lint format type-check pre-commit clean build docs serve-docs
+.PHONY: help install install-dev test test-cov lint format pre-commit qa clean build env-info
 
 # Default target
 help: ## Show this help message
@@ -18,10 +18,7 @@ test: ## Run tests
 	uv run pytest
 
 test-cov: ## Run tests with coverage
-	uv run pytest --cov={{ project_slug }} --cov-report=html --cov-report=term
-
-test-watch: ## Run tests in watch mode
-	uv run pytest-watch
+	uv run pytest --cov=myproject --cov-report=html --cov-report=term
 
 # Code quality
 lint: ## Run linting
@@ -60,5 +57,5 @@ build: ## Build package
 env-info: ## Show environment information
 	@echo "Python version: $(shell uv run python --version)"
 	@echo "UV version: $(shell uv --version)"
-	@echo "Project: {{ project_name }}"
-	@echo "Package: {{ project_slug }}"
+	@echo "Project: My Project"
+	@echo "Package: myproject"
