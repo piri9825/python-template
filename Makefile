@@ -11,7 +11,7 @@ install: ## Install project dependencies
 
 install-dev: ## Install project with development dependencies
 	uv sync --extra dev
-	pre-commit install
+	uv run pre-commit install
 
 # Testing
 test: ## Run tests
