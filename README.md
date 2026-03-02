@@ -43,4 +43,3 @@ make qa            # Run all quality checks
 - **ruff** for linting and formatting
 - **pre-commit** hooks for code quality
 - **GitHub Actions** CI pipeline (test, lint, build)
-- **Dependabot** for automated dependency updates
